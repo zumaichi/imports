@@ -1,6 +1,6 @@
 import "./main.ts";
 
-interface juego {
+interface partida {
   puntuacion: number;
   calcularNumeroAleatorio: number;
   obtenerValorCarta: number;
@@ -8,7 +8,7 @@ interface juego {
   cartaUrl: number;
 }
 
-export const juego: juego = {
+export const partida: partida = {
   puntuacion: 0,
   calcularNumeroAleatorio: 0,
   obtenerValorCarta: 0,

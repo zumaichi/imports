@@ -1,4 +1,4 @@
-import { juego, cartaUrl } from "./model";
+import { partida, cartaUrl } from "./model";
 import { pedirCarta } from "./motor";
 
 export const muestraCarta = (numeroAleatorio?: number) => {
@@ -16,11 +16,11 @@ export const muestraCarta = (numeroAleatorio?: number) => {
 };
 
 export const aumentarPuntuacion = (valor: number) => {
-  juego.puntuacion += valor;
+  partida.puntuacion += valor;
 
   const puntuacionElemento = document.getElementById("puntuacion");
   if (puntuacionElemento !== null) {
-    puntuacionElemento.innerHTML = `${juego.puntuacion}`;
+    puntuacionElemento.innerHTML = `${partida.puntuacion}`;
   } else {
     console.error("No se ha encontrado el elemento de puntuación");
   }
@@ -108,8 +108,8 @@ export const mostrarEstado = (puntuacion: number) => {
 };
 
 export const reinicio = () => {
-  juego.puntuacion = 0;
-  document.getElementById("puntuacion")!.innerHTML = `${juego.puntuacion}`;
+  partida.puntuacion = 0;
+  document.getElementById("puntuacion")!.innerHTML = `${partida.puntuacion}`;
   habilitarBotones();
   muestraCarta();
   desactivarSguir();
@@ -154,7 +154,7 @@ export const cargarEventos = () => {
       activarReinicio();
       activarSguir();
       deshabilitarBotones();
-      mostrarEstado(juego.puntuacion);
+      mostrarEstado(partida.puntuacion);
     });
   } else {
     console.error("error al plantarte");
@@ -170,7 +170,7 @@ export const cargarEventos = () => {
     botonReinicio.addEventListener("click", () => {
       reinicio();
       anularReinicio();
-      mostrarEstado(juego.puntuacion);
+      mostrarEstado(partida.puntuacion);
     });
   } else {
     console.error("Error al inicializar el botón de reinicio");

@@ -3,7 +3,7 @@ import {
   calcularNumeroAleatorio,
   obtenerValorCarta,
   obtenerValorUrlCarta,
-  juego,
+  partida,
 } from "./model";
 import {
   aumentarPuntuacion,
@@ -20,10 +20,10 @@ export const pedirCarta = () => {
   const valorUrlCarta = obtenerValorUrlCarta(numeroAleatorio);
 
   muestraCarta(valorUrlCarta);
-  console.log("puntuacion: ", juego.puntuacion);
+  console.log("puntuacion: ", partida.puntuacion);
 
-  if (juego.puntuacion >= 7.5) {
-    mostrarEstado(juego.puntuacion);
+  if (partida.puntuacion >= 7.5) {
+    mostrarEstado(partida.puntuacion);
     deshabilitarBotones();
   }
 };
