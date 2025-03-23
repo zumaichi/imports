@@ -176,3 +176,7 @@ export const cargarEventos = () => {
     console.error("Error al inicializar el botón de reinicio");
   }
 };
+export const iniciarPartida = () => {
+  partida.puntuacion = 0;
+  partida.cartaUrl;
+};
