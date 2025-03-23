@@ -1,11 +1,13 @@
 import "./main.ts";
 
+
 interface partida {
   puntuacion: number;
   calcularNumeroAleatorio: number;
   obtenerValorCarta: number;
   obtenerValorUrlCarta: number;
   cartaUrl: number;
+  
 }
 
 export const partida: partida = {

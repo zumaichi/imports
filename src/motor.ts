@@ -1,3 +1,4 @@
+
 import {
   calcularNumeroAleatorio,
   obtenerValorCarta,
@@ -10,6 +11,8 @@ import {
   muestraCarta,
   deshabilitarBotones,
 } from "./ui";
+
+
 export const pedirCarta = () => {
   const numeroAleatorio = calcularNumeroAleatorio();
 
