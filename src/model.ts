@@ -1,5 +1,3 @@
-import "./main.ts";
-
 
 interface partida {
   puntuacion: number;
