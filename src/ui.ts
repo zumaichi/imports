@@ -1,5 +1,5 @@
-import { partida, cartaUrl } from "./model";
-import { pedirCarta } from "./motor";
+import { cartaUrl } from "./model";
+import { Partida,pedirCarta  } from "./motor";
 
 export const muestraCarta = (numeroAleatorio?: number) => {
   const imagen = document.getElementById("imagenCarta");
@@ -16,11 +16,11 @@ export const muestraCarta = (numeroAleatorio?: number) => {
 };
 
 export const aumentarPuntuacion = (valor: number) => {
-  partida.puntuacion += valor;
+  Partida.puntuacion += valor;
 
   const puntuacionElemento = document.getElementById("puntuacion");
   if (puntuacionElemento !== null) {
-    puntuacionElemento.innerHTML = `${partida.puntuacion}`;
+    puntuacionElemento.innerHTML = `${Partida.puntuacion}`;
   } else {
     console.error("No se ha encontrado el elemento de puntuación");
   }
@@ -108,8 +108,8 @@ export const mostrarEstado = (puntuacion: number) => {
 };
 
 export const reinicio = () => {
-  partida.puntuacion = 0;
-  document.getElementById("puntuacion")!.innerHTML = `${partida.puntuacion}`;
+  Partida.puntuacion = 0;
+  document.getElementById("puntuacion")!.innerHTML = `${Partida.puntuacion}`;
   habilitarBotones();
   muestraCarta();
   desactivarSguir();
@@ -126,7 +126,7 @@ export const cargarEventos = () => {
     botonSeguir.disabled = true;
 
     botonSeguir.addEventListener("click", () => {
-      pedirCarta();
+     pedirCarta();
     });
   } else {
     console.error("error al seguir");
@@ -139,7 +139,7 @@ export const cargarEventos = () => {
     botonDarCarta !== undefined &&
     botonDarCarta instanceof HTMLButtonElement
   ) {
-    botonDarCarta.addEventListener("click", pedirCarta);
+    botonDarCarta.addEventListener("click", () => pedirCarta());
   } else {
     console.error("error al dar una carta");
   }
@@ -154,7 +154,7 @@ export const cargarEventos = () => {
       activarReinicio();
       activarSguir();
       deshabilitarBotones();
-      mostrarEstado(partida.puntuacion);
+      mostrarEstado(Partida.puntuacion);
     });
   } else {
     console.error("error al plantarte");
@@ -170,7 +170,7 @@ export const cargarEventos = () => {
     botonReinicio.addEventListener("click", () => {
       reinicio();
       anularReinicio();
-      mostrarEstado(partida.puntuacion);
+      mostrarEstado(Partida.puntuacion);
     });
   } else {
     console.error("Error al inicializar el botón de reinicio");
