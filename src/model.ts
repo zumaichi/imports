@@ -1,6 +1,3 @@
-
-
-
 export const cartaUrl = (numeroAleatorio?: number) => {
   switch (numeroAleatorio) {
     case 1:
