@@ -1,11 +1,11 @@
-import { cartaUrl } from "./model";
+import { partida } from "./model";
+
 import {
   calcularNumeroAleatorio,
   obtenerValorCarta,
   obtenerValorUrlCarta,
+  cartaUrl,
 } from "./motor";
-
-let puntuacion = 0;
 
 export const pedirCarta = () => {
   const numeroAleatorio = calcularNumeroAleatorio();
@@ -16,10 +16,10 @@ export const pedirCarta = () => {
   const valorUrlCarta = obtenerValorUrlCarta(numeroAleatorio);
 
   muestraCarta(valorUrlCarta);
-  console.log("puntuacion: ", puntuacion);
+  console.log("puntuacion: ", partida.puntuacion);
 
-  if (puntuacion >= 7.5) {
-    mostrarEstado(puntuacion);
+  if (partida.puntuacion >= 7.5) {
+    mostrarEstado(partida.puntuacion);
     deshabilitarBotones();
   }
 };
@@ -37,13 +37,15 @@ export const muestraCarta = (numeroAleatorio?: number) => {
     console.error("No se ha encontrado la imagen");
   }
 };
-
+export function actualizarPuntuacion(valor: number) {
+  partida.puntuacion += valor;
+}
 export const aumentarPuntuacion = (valor: number) => {
-  puntuacion += valor;
+  actualizarPuntuacion(valor);
 
   const puntuacionElemento = document.getElementById("puntuacion");
   if (puntuacionElemento !== null) {
-    puntuacionElemento.innerHTML = `${puntuacion}`;
+    puntuacionElemento.innerHTML = `${partida.puntuacion}`;
   } else {
     console.error("No se ha encontrado el elemento de puntuación");
   }
@@ -131,8 +133,8 @@ export const mostrarEstado = (puntuacion: number) => {
 };
 
 export const reinicio = () => {
-  puntuacion = 0;
-  document.getElementById("puntuacion")!.innerHTML = `${puntuacion}`;
+  partida.puntuacion = 0;
+  document.getElementById("puntuacion")!.innerHTML = `${partida.puntuacion}`;
   habilitarBotones();
   muestraCarta();
   desactivarSguir();
@@ -177,7 +179,7 @@ export const cargarEventos = () => {
       activarReinicio();
       activarSguir();
       deshabilitarBotones();
-      mostrarEstado(puntuacion);
+      mostrarEstado(partida.puntuacion);
     });
   } else {
     console.error("error al plantarte");
@@ -193,7 +195,7 @@ export const cargarEventos = () => {
     botonReinicio.addEventListener("click", () => {
       reinicio();
       anularReinicio();
-      mostrarEstado(puntuacion);
+      mostrarEstado(partida.puntuacion);
     });
   } else {
     console.error("Error al inicializar el botón de reinicio");
