@@ -1,6 +1,4 @@
-import {} from "./model";
 
-import {} from "./ui";
 
 export const calcularNumeroAleatorio = () => Math.floor(Math.random() * 10) + 1;
 
@@ -62,14 +60,4 @@ export const obtenerMensajeFinal = (puntuacion: number): string => {
   }
 };
 
-export const mostrarMensajeFinal = (mensaje: string) => {
-  const mensajeFinal = document.getElementById("mensaje");
-  if (mensajeFinal !== null) {
-    mensajeFinal.innerHTML = mensaje;
-  }
-};
 
-export const mostrarEstado = (puntuacion: number) => {
-  const mensaje = obtenerMensajeFinal(puntuacion);
-  mostrarMensajeFinal(mensaje);
-};

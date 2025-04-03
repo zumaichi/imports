@@ -5,6 +5,7 @@ import {
   obtenerValorCarta,
   obtenerValorUrlCarta,
   cartaUrl,
+  obtenerMensajeFinal,
 } from "./motor";
 
 export const pedirCarta = () => {
@@ -113,8 +114,9 @@ export const desactivarSguir = () => {
     botonSguirContenedor.disabled = true;
 };
 
-export const mostrarEstado = (puntuacion: number) => {
+export const pintarMensaje = (puntuacion: number) => {
   const mensajeFinal = document.getElementById("mensaje");
+  
   if (mensajeFinal !== null) {
     if (puntuacion >= 0.5 && puntuacion <= 4) {
       mensajeFinal.innerHTML = "Has sido muy conservador.";
@@ -200,4 +202,15 @@ export const cargarEventos = () => {
   } else {
     console.error("Error al inicializar el botón de reinicio");
   }
+};
+export const mostrarMensajeFinal = (mensaje: string) => {
+  const mensajeFinal = document.getElementById("mensaje");
+  if (mensajeFinal !== null) {
+    mensajeFinal.innerHTML = mensaje;
+  }
+};
+
+export const mostrarEstado = (puntuacion: number) => {
+  const mensaje = obtenerMensajeFinal(puntuacion);
+  mostrarMensajeFinal(mensaje);
 };
